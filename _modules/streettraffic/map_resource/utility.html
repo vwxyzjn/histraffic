@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>streettraffic.map_resource.utility &mdash; StreetTraffic 0.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="StreetTraffic 0.10 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../docindex.html" class="icon icon-home"> StreetTraffic
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">An Introduction to StreetTraffic&#8217;s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">StreetTraffic Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../docindex.html">StreetTraffic</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../docindex.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>streettraffic.map_resource.utility</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for streettraffic.map_resource.utility</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="k">import</span> <span class="n">vincenty</span><span class="p">,</span> <span class="n">great_circle</span>
+<span class="kn">from</span> <span class="nn">matplotlib.path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="c1"># todo: convert quadkeys to tile</span>
+<span class="c1"># todo: convert tile to coordinates</span>
+<span class="c1"># todo:</span>
+
+<div class="viewcode-block" id="Utility"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility">[docs]</a><span class="k">class</span> <span class="nc">Utility</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        In order to generate Url Resources, you should get app_id and app_code at developer.HERE.com</span>
+<span class="sd">        Specific instructions can be found here:</span>
+<span class="sd">        https://developer.here.com/rest-apis/documentation/traffic/common/credentials.html</span>
+
+<span class="sd">        Example inputs:</span>
+<span class="sd">        settings = {</span>
+<span class="sd">            &#39;app_id&#39;: &#39;F8aPRXcW3MmyUvQ8Z3J9&#39;,</span>
+<span class="sd">            &#39;app_code&#39; : &#39;IVp1_zoGHdLdz0GvD_Eqsw&#39;,</span>
+<span class="sd">            &#39;map_tile_base_url&#39;: &#39;https://1.traffic.maps.cit.api.here.com/maptile/2.1/traffictile/newest/normal.day/&#39;,</span>
+<span class="sd">            &#39;json_tile_base_url&#39;: &#39;https://traffic.cit.api.here.com/traffic/6.2/flow.json?&#39;</span>
+<span class="sd">        }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_id</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;app_id&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_code</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;app_code&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map_tile_base_url</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;map_tile_base_url&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">json_tile_base_url</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;json_tile_base_url&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.get_tile"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_tile">[docs]</a>    <span class="k">def</span> <span class="nf">get_tile</span><span class="p">(</span><span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: lat:float(latitue), lon:float(longitude), and zoom:int(zoom level)</span>
+
+<span class="sd">        The function is used to generate column and row information for HERE API usage. For details, please</span>
+<span class="sd">        visit https://developer.here.com/rest-apis/documentation/enterprise-map-tile/topics/key-concepts.html</span>
+<span class="sd">        for reference. </span>
+
+<span class="sd">        return :tuple(column, row)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lat_rad</span> <span class="o">=</span> <span class="n">lat</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="p">((</span><span class="n">lon</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span>  <span class="c1"># Column</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span>
+                                 <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Row</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">))</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.get_quadkeys"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_quadkeys">[docs]</a>    <span class="k">def</span> <span class="nf">get_quadkeys</span><span class="p">(</span><span class="n">col</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: col:float(column), row:float, zoom:int</span>
+
+<span class="sd">        This function is used to encode (col, row, zoom) as quadkey. For details, refer to </span>
+<span class="sd">        https://developer.here.com/rest-apis/documentation/traffic/common/map_tile/topics/quadkeys.html</span>
+
+<span class="sd">        return :str(quadkey)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">quadkey</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">zoom</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">digit</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">col</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># notice this is a bitwise operator!! different from &amp;&amp; or and</span>
+                <span class="n">digit</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">row</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">digit</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="n">quadkey</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">quadkey</span></div>
+
+<div class="viewcode-block" id="Utility.get_map_tile_resource"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_map_tile_resource">[docs]</a>    <span class="k">def</span> <span class="nf">get_map_tile_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location_data</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">location_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">img_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: location_data: tuple, zoom:int(zoom level), img_size:int(256 or 512), location_type: str</span>
+
+<span class="sd">        The location_type and corresponding location data is as follow</span>
+<span class="sd">        location_type = &quot;latlon&quot;; location_data = (latitude, longitude)</span>
+<span class="sd">        location_type = &quot;colrow&quot;; location_data = (column, row)</span>
+
+<span class="sd">        This function is uses location_data to generate (col, row), if location_type == &quot;colrow&quot;, we simply use the provided</span>
+<span class="sd">        (col, row) and further use them to generate a url to get map_tile. </span>
+
+<span class="sd">        For map_tile resource details, refer to</span>
+<span class="sd">        https://developer.here.com/rest-apis/documentation/enterprise-map-tile/topics/quick-start.html</span>
+
+<span class="sd">        return :str(url for map_tile)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if user did not provide a col, row, we use self.get_tile()</span>
+        <span class="k">if</span> <span class="n">location_type</span> <span class="o">==</span> <span class="s2">&quot;latlon&quot;</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_tile</span><span class="p">(</span><span class="o">*</span><span class="n">location_data</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">location_type</span> <span class="o">==</span> <span class="s2">&quot;colrow&quot;</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">=</span> <span class="n">location_data</span>
+
+        <span class="n">total_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_tile_base_url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">zoom</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span>
+            <span class="n">row</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">img_size</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/png8?app_id=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_id</span> <span class="o">+</span> <span class="s1">&#39;&amp;app_code=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_code</span>
+
+        <span class="k">return</span> <span class="n">total_url</span></div>
+
+<div class="viewcode-block" id="Utility.get_traffic_json_resource"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_traffic_json_resource">[docs]</a>    <span class="k">def</span> <span class="nf">get_traffic_json_resource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location_data</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">location_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: location_data: tuple, zoom:int(zoom level)</span>
+<span class="sd">        default inputs: col:int = 0, row: int = 0, location_type: str</span>
+
+<span class="sd">        The location_type and corresponding location data is as follow</span>
+<span class="sd">        location_type = &quot;latlon&quot;; location_data = (latitude, longitude)</span>
+<span class="sd">        location_type = &quot;colrow&quot;; location_data = (column, row)</span>
+
+<span class="sd">        This function is uses location_data to generate (col, row), if location_type == &quot;colrow&quot;, we simply use the provided</span>
+<span class="sd">        (col, row). Then we use (col, row) to further utilize self.get_quadkeys() to </span>
+<span class="sd">        get a quad key, then generate a url to get traffic_json resource. </span>
+
+<span class="sd">        For traffic_json resource details, refer to</span>
+<span class="sd">        https://developer.here.com/rest-apis/documentation/traffic/topics/quick-start.html</span>
+
+<span class="sd">        return :str(url for traffic_tile_json)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">location_type</span> <span class="o">==</span> <span class="s2">&quot;latlon&quot;</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_tile</span><span class="p">(</span><span class="o">*</span><span class="n">location_data</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">location_type</span> <span class="o">==</span> <span class="s2">&quot;colrow&quot;</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">=</span> <span class="n">location_data</span>
+
+        <span class="n">quadkey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_quadkeys</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+        <span class="n">total_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_tile_base_url</span> <span class="o">+</span> <span class="s1">&#39;app_id=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_id</span> <span class="o">+</span> \
+            <span class="s1">&#39;&amp;app_code=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_code</span> <span class="o">+</span> <span class="s1">&#39;&amp;quadkey=&#39;</span> <span class="o">+</span> <span class="n">quadkey</span> <span class="o">+</span> <span class="s1">&#39;&amp;responseattributes=sh,fc&#39;</span>
+
+        <span class="k">return</span> <span class="n">total_url</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.produce_polygon"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.produce_polygon">[docs]</a>    <span class="k">def</span> <span class="nf">produce_polygon</span><span class="p">(</span><span class="n">polygon_ordered_coordinates</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">plot_polygon</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: </span>
+<span class="sd">        polygon_ordered_coordinates: List(an ordered list of points that composes a polygon)</span>
+<span class="sd">        plot_polygon = True</span>
+<span class="sd">        zoom: int</span>
+<span class="sd">        example inputs:</span>
+<span class="sd">        [[25.890099, -80.264561], [25.851873, -80.308744], [25.81123, -80.248538], [25.848596, -80.215765]], True</span>
+
+
+<span class="sd">        This function use matplotlib.path to create a Path/polygon object. Later we can use</span>
+<span class="sd">        this Path/polygon object to invoke Path.contains_point() method. For more details </span>
+<span class="sd">        on contains_point(), refer to </span>
+<span class="sd">        https://stackoverflow.com/questions/21328854/shapely-and-matplotlib-point-in-polygon-not-accurate-with-geolocation</span>
+
+<span class="sd">        If plot_polygon == True, we use matplotlib to plot the polygon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">polygon_tile_points</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">polygon_ordered_coordinates</span><span class="p">:</span>
+            <span class="n">polygon_tile_points</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Utility</span><span class="o">.</span><span class="n">get_tile</span><span class="p">(</span><span class="o">*</span><span class="n">item</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)]</span>
+        <span class="n">polygon_tile_points</span> <span class="o">+=</span> <span class="p">[</span><span class="n">polygon_tile_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">polygon</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">polygon_tile_points</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot_polygon</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+            <span class="n">patch</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">PathPatch</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">polygon_tile_points</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">max</span><span class="p">(</span><span class="n">polygon_tile_points</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">polygon_tile_points</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">max</span><span class="p">(</span><span class="n">polygon_tile_points</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">polygon</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.get_area_tile_matrix"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_area_tile_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">get_area_tile_matrix</span><span class="p">(</span><span class="n">list_points</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">use_polygon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: list_points (GPS coordinates that you want to add)</span>
+<span class="sd">                zoom: int(zoom level)</span>
+<span class="sd">                use_polygon = None</span>
+
+<span class="sd">        example inputs: [(33.766764, -84.409533), (33.740003, -84.368978)], 14</span>
+
+<span class="sd">        This function takes the coordinates from *args and calculate their tile (col, row),</span>
+<span class="sd">        then it generate a matrix of tiles to cover the square defined by those coordinates.</span>
+
+<span class="sd">        If use_polygon == True, then we generate a polygon given by self.produce_polygon,</span>
+<span class="sd">        and further return the area_tiles that are **inside**(not including boundry) the polygon</span>
+
+<span class="sd">        ###^^^^^^*####  (in this example, two coordinates are denoted as *</span>
+<span class="sd">        #  ^^^^^^^   #   and this function should generate tile to cover the</span>
+<span class="sd">        #  ^^^^^^^   #   area denoted by ^ and *)</span>
+<span class="sd">        ###*^^^^^^####</span>
+
+<span class="sd">        return :DataFrame(a matrix of tiles to cover the area spanned by two coordinates)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tiles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">list_points</span><span class="p">:</span>
+            <span class="n">tiles</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Utility</span><span class="o">.</span><span class="n">get_tile</span><span class="p">(</span><span class="o">*</span><span class="n">point</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)]</span>
+        <span class="n">left_col</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">tiles</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">right_col</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tiles</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">top_row</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">tiles</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">bottom_row</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tiles</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># notice bottom_row would actually have a higher number</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">bottom_row</span> <span class="o">-</span> <span class="n">top_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">right_col</span> <span class="o">-</span> <span class="n">left_col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">left_col</span> <span class="o">+</span> <span class="n">col</span><span class="p">,</span> <span class="n">top_row</span> <span class="o">+</span> <span class="n">row</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_polygon</span><span class="p">:</span>
+            <span class="n">polygon</span> <span class="o">=</span> <span class="n">Utility</span><span class="o">.</span><span class="n">produce_polygon</span><span class="p">(</span><span class="n">list_points</span><span class="p">,</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">plot_polygon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tiles</span><span class="p">:</span>  <span class="c1"># make sure the polygon points are covered</span>
+                        <span class="k">continue</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">polygon</span><span class="o">.</span><span class="n">contains_point</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]):</span>
+                        <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">matrix</span></div>
+
+<div class="viewcode-block" id="Utility.get_area_tile_matrix_url"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_area_tile_matrix_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_area_tile_matrix_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resource_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_points</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">zoom</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">use_polygon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: resource_type: str(a string indicating the resource type)</span>
+<span class="sd">                list_points (GPS coordinates that you want to add)</span>
+<span class="sd">                zoom: int(zoom level)</span>
+<span class="sd">                use_polygon = False</span>
+
+<span class="sd">        The resource_type has two options:</span>
+<span class="sd">        * map_tile</span>
+<span class="sd">        * traffic_json</span>
+
+<span class="sd">        This function takes two coordinates and calculate their tile (col, row),</span>
+<span class="sd">        then it generate a matrix of tiles **URLs** (either map_tile urls or traffic_json urls) </span>
+<span class="sd">        to cover the square defined by those two coordinates.</span>
+
+<span class="sd">        ###^^^^^^*####  (in this example, two coordinates are denoted as *</span>
+<span class="sd">        #  ^^^^^^^   #   and this function should generate tile to cover the</span>
+<span class="sd">        #  ^^^^^^^   #   area denoted by ^ and *)</span>
+<span class="sd">        ###*^^^^^^####</span>
+
+<span class="sd">        return :DataFrame(a matrix of tiles **URLs** to cover the area spanned by two coordinates)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_area_tile_matrix</span><span class="p">(</span><span class="n">list_points</span><span class="p">,</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">use_polygon</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">resource_type</span> <span class="o">==</span> <span class="s2">&quot;map_tile&quot;</span><span class="p">:</span>
+                        <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_map_tile_resource</span><span class="p">(</span><span class="n">location_data</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">],</span> <span class="n">location_type</span> <span class="o">=</span> <span class="s2">&quot;colrow&quot;</span><span class="p">,</span> <span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">img_size</span> <span class="o">=</span> <span class="mi">512</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">resource_type</span> <span class="o">==</span> <span class="s2">&quot;traffic_json&quot;</span><span class="p">:</span>
+                        <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_traffic_json_resource</span><span class="p">(</span><span class="n">location_data</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">],</span> <span class="n">location_type</span> <span class="o">=</span> <span class="s2">&quot;colrow&quot;</span><span class="p">,</span> <span class="n">zoom</span> <span class="o">=</span> <span class="n">zoom</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">matrix</span></div>
+
+<div class="viewcode-block" id="Utility.assemble_matrix_images"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.assemble_matrix_images">[docs]</a>    <span class="k">def</span> <span class="nf">assemble_matrix_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        input: matrix: pd.DataFrame, </span>
+
+<span class="sd">        This function takes a matrix generated by get_area_tile_matrix_url() and assemble a picture</span>
+<span class="sd">        out of it. </span>
+
+<span class="sd">        return :pd.DataFrame(a matrix of PIL.Image classes)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">img_matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]:</span>
+                    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">])</span>
+                    <span class="n">img_matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+
+        <span class="c1"># producing image</span>
+        <span class="n">vertical</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img_matrix</span><span class="p">)):</span>
+            <span class="n">hstack_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">img_matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">item</span><span class="p">:</span>
+                    <span class="n">hstack_list</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)))]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">hstack_list</span> <span class="o">+=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)]</span>
+            <span class="n">horizontal_combs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">hstack_list</span><span class="p">)</span>
+            <span class="n">vertical</span> <span class="o">+=</span> <span class="p">[</span><span class="n">horizontal_combs</span><span class="p">]</span>
+        <span class="n">imgs_comb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">vertical</span><span class="p">)</span>
+        <span class="n">imgs_comb</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span> <span class="n">imgs_comb</span><span class="p">)</span>
+        <span class="n">imgs_comb</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">img_matrix</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.get_distance"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.get_distance">[docs]</a>    <span class="k">def</span> <span class="nf">get_distance</span><span class="p">(</span><span class="n">point1</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">point2</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">location_type</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;latlon&quot;</span><span class="p">,</span> <span class="n">distance_formula</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;great_circle&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;meters&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: point1: tuple, point2: tuple, location_type:str = &quot;latlon&quot;, distance_formula:str = &quot;great_circle&quot;, unit:str = &quot;meters&quot;</span>
+<span class="sd">        the format should be point1 = (latitude, longitude)</span>
+<span class="sd">        currently only supporting location_type = &quot;latlon&quot;</span>
+<span class="sd">        distance_formula has two option: &quot;great_circle&quot; and &quot;vincenty&quot;</span>
+<span class="sd">        the defualt unit is meters</span>
+
+<span class="sd">        This function is a quick wraper for geopy.</span>
+
+<span class="sd">        return the distance between point1 and point2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">distance_formula</span> <span class="o">==</span> <span class="s2">&quot;great_circle&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">great_circle</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">)</span><span class="o">.</span><span class="n">meters</span>
+        <span class="k">elif</span> <span class="n">distance_formula</span> <span class="o">==</span> <span class="s2">&quot;vincenty&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">vincenty</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">)</span><span class="o">.</span><span class="n">meters</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;undefined distance_formula&#39;</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.read_geojson_polygon"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.read_geojson_polygon">[docs]</a>    <span class="k">def</span> <span class="nf">read_geojson_polygon</span><span class="p">(</span><span class="n">geojson_polygon</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        inputs: geojson_polygon: str (a json encoding of a geojson polygon)</span>
+<span class="sd">        example inputs:</span>
+<span class="sd">        &#39;{</span>
+<span class="sd">          &quot;type&quot;: &quot;FeatureCollection&quot;,</span>
+<span class="sd">          &quot;features&quot;: [</span>
+<span class="sd">            {</span>
+<span class="sd">              &quot;type&quot;: &quot;Feature&quot;,</span>
+<span class="sd">              &quot;geometry&quot;: {</span>
+<span class="sd">                &quot;type&quot;: &quot;Polygon&quot;,</span>
+<span class="sd">                &quot;coordinates&quot;: [</span>
+<span class="sd">                  [</span>
+<span class="sd">                    [</span>
+<span class="sd">                      -84.38658714294434,</span>
+<span class="sd">                      33.76908761144743</span>
+<span class="sd">                    ],</span>
+<span class="sd">                    [</span>
+<span class="sd">                      -84.37294006347656,</span>
+<span class="sd">                      33.766590334877485</span>
+<span class="sd">                    ]</span>
+<span class="sd">                  ]</span>
+<span class="sd">                ]</span>
+<span class="sd">              },</span>
+<span class="sd">              &quot;properties&quot;: {}</span>
+<span class="sd">            }</span>
+<span class="sd">          ]</span>
+<span class="sd">        }&#39;</span>
+<span class="sd">        </span>
+<span class="sd">        Notice in geojson, the coordinates have the format [Longitude, latitude] while matplotlib.path.Path</span>
+<span class="sd">        This function outputs a polygon list that consist of coordiantes that has [latitude, longitude] format.</span>
+
+<span class="sd">        example outputs:</span>
+<span class="sd">        [[33.76908761144743, -84.38658714294434],</span>
+<span class="sd">         [33.766590334877485, -84.37294006347656]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">geojson_polygon_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">geojson_polygon</span><span class="p">)</span>
+        <span class="n">polygon_coordinates</span> <span class="o">=</span> <span class="n">geojson_polygon_dict</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">polygon</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">polygon_coordinates</span><span class="p">:</span>
+            <span class="n">polygon</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>
+        <span class="k">return</span> <span class="n">polygon</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Utility.matrix_coverage"><a class="viewcode-back" href="../../../streettraffic.map_resource.html#streettraffic.map_resource.utility.Utility.matrix_coverage">[docs]</a>    <span class="k">def</span> <span class="nf">matrix_coverage</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate some statistical information about</span>
+<span class="sd">        how many valid query tiles are there in your</span>
+<span class="sd">        provided matrix</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            matrix (pd.DataFrame): The JSON raw data</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None, but it prints out some information</span>
+<span class="sd">            about your matrix</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filled_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">None_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]:</span>
+                    <span class="n">filled_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">None_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;matrix has a total of&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;tiles&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">filled_count</span><span class="p">,</span> <span class="s1">&#39;of them are filled&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">None_count</span><span class="p">,</span> <span class="s1">&#39;of them are None because of the polygon limitation&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Costa Huang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.10',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

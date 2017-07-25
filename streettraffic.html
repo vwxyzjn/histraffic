@@ -1,0 +1,1152 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>streettraffic package &mdash; StreetTraffic 0.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="StreetTraffic 0.10 documentation" href="index.html"/>
+        <link rel="up" title="StreetTraffic Reference" href="modules.html"/>
+        <link rel="next" title="streettraffic.map_resource package" href="streettraffic.map_resource.html"/>
+        <link rel="prev" title="StreetTraffic Reference" href="modules.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="docindex.html" class="icon icon-home"> StreetTraffic
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">An Introduction to StreetTraffic&#8217;s</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">StreetTraffic Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">streettraffic package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="streettraffic.map_resource.html">streettraffic.map_resource package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-streettraffic.database">streettraffic.database module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-streettraffic.datafeed">streettraffic.datafeed module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-streettraffic.log">streettraffic.log module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-streettraffic.server">streettraffic.server module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streettraffic-tools-module">streettraffic.tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-streettraffic">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="docindex.html">StreetTraffic</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="docindex.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">StreetTraffic Reference</a> &raquo;</li>
+        
+      <li>streettraffic package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/streettraffic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="streettraffic-package">
+<h1>streettraffic package<a class="headerlink" href="#streettraffic-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="streettraffic.map_resource.html">streettraffic.map_resource package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="streettraffic.map_resource.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streettraffic.map_resource.html#module-streettraffic.map_resource.utility">streettraffic.map_resource.utility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streettraffic.map_resource.html#module-streettraffic.map_resource">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-streettraffic.database">
+<span id="streettraffic-database-module"></span><h2>streettraffic.database module<a class="headerlink" href="#module-streettraffic.database" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="streettraffic.database.TrafficData">
+<em class="property">class </em><code class="descclassname">streettraffic.database.</code><code class="descname">TrafficData</code><span class="sig-paren">(</span><em>database_name: str = 'Traffic'</em>, <em>database_ip: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class deals with traffic data interaction with database</p>
+<p>Interaction include inserting traffic flow data from <cite>HERE.com</cite> and
+retriving them.</p>
+<dl class="attribute">
+<dt id="streettraffic.database.TrafficData.conn">
+<code class="descname">conn</code><a class="headerlink" href="#streettraffic.database.TrafficData.conn" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>connection</em> &#8211; The connection to RethinkDB database</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="streettraffic.database.TrafficData.latest_crawled_batch_id">
+<code class="descname">latest_crawled_batch_id</code><a class="headerlink" href="#streettraffic.database.TrafficData.latest_crawled_batch_id" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; the latest crawled_batch_id of crawled_batch table</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.fetch_geojson_item">
+<code class="descname">fetch_geojson_item</code><span class="sig-paren">(</span><em>road_data_id: str</em>, <em>crawled_batch_id: str = None</em>, <em>calculate_traffic_color=True</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.fetch_geojson_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.fetch_geojson_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function uses a road_data_id(primary key) to fethe a geojson object from
+the road_data database. If calculate_traffic_color == True, then we also use
+traffic_flow_color_scheme() to calcuroad_data_idlate a color for the road</p>
+<p>For more infomation about geojson, check out
+<a class="reference external" href="http://geojson.org/">http://geojson.org/</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>road_data_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">road_data</span></code></li>
+<li><strong>crawled_batch_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">crawled_batch</span></code>, if crawled_batch_id is <code class="docutils literal"><span class="pre">None</span></code>,
+the default setting, then it will be initlized to be the same as
+<code class="docutils literal"><span class="pre">self.latest_crawled_batch_id</span></code></li>
+<li><strong>calculate_traffic_color</strong> (<em>bool</em>) &#8211; whether you want to have a color attribute attached to your geojson
+object. The color is calculated by <code class="docutils literal"><span class="pre">self.traffic_flow_color_scheme()</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a geojson object, see the example below.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">fetch_geojson_item</span><span class="p">(</span><span class="s1">&#39;[&quot;34.85075,-82.39899 34.85154,-82.39863 &quot;]&#39;</span><span class="p">,</span>
+<span class="go">        &#39;44b57efd-8b63-4c49-8c86-9e92f79f528a&#39;, True)</span>
+<span class="go">{&#39;geometry&#39;: {&#39;coordinates&#39;: [[-82.39899, 34.85075], [-82.39863, 34.85154]],</span>
+<span class="go"> &#39;type&#39;: &#39;LineString&#39;},</span>
+<span class="go">&#39;properties&#39;: {&#39;CF&#39;: {&#39;CN&#39;: 0.7,</span>
+<span class="go">  &#39;FF&#39;: 10.56,</span>
+<span class="go">  &#39;JF&#39;: 0,</span>
+<span class="go">  &#39;LN&#39;: [],</span>
+<span class="go">  &#39;SP&#39;: 8.7,</span>
+<span class="go">  &#39;SU&#39;: 8.7,</span>
+<span class="go">  &#39;TY&#39;: &#39;TR&#39;,</span>
+<span class="go">  &#39;crawled_batch_id&#39;: &#39;44b57efd-8b63-4c49-8c86-9e92f79f528a&#39;,</span>
+<span class="go">  &#39;created_timestamp&#39;: &#39;2017-07-14T05:06:39+00:00&#39;,</span>
+<span class="go">  &#39;flow_data_id&#39;: &#39;337cb755-8eb9-4808-94c9-29e422bc3e32&#39;,</span>
+<span class="go">  &#39;flow_item_id&#39;: &#39;{&quot;DE&quot;: &quot;SC-183/Beattie Pl/College St&quot;, &quot;LE&quot;: 0.64899, &quot;PC&quot;: 11029, &quot;QD&quot;: &quot;-&quot;}&#39;,</span>
+<span class="go">  &#39;original_data_id&#39;: &#39;1a84e269-2070-4697-b75b-1349edcb7bbb&#39;},</span>
+<span class="go"> &#39;TMC&#39;: {&#39;DE&#39;: &#39;SC-183/Beattie Pl/College St&#39;,</span>
+<span class="go">  &#39;LE&#39;: 0.64899,</span>
+<span class="go">  &#39;PC&#39;: 11029,</span>
+<span class="go">  &#39;QD&#39;: &#39;-&#39;},</span>
+<span class="go"> &#39;color&#39;: &#39;green&#39;},</span>
+<span class="go">&#39;type&#39;: &#39;Feature&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="streettraffic.database.TrafficData.format_list_points_for_display">
+<em class="property">static </em><code class="descname">format_list_points_for_display</code><span class="sig-paren">(</span><em>list_points: typing.List</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.format_list_points_for_display"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.format_list_points_for_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function format the example inputs into a string that can be used
+to plot in <a class="reference external" href="https://www.darrinward.com/lat-long/">https://www.darrinward.com/lat-long/</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>list_points</strong> (<em>List</em>) &#8211; a list of latlon coordiantes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">print the string and plot it in
+<a class="reference external" href="https://www.darrinward.com/lat-long/">https://www.darrinward.com/lat-long/</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">33.75931214236421</span><span class="p">,</span> <span class="o">-</span><span class="mf">84.41242218017578</span><span class="p">],</span>
+<span class="go">    [33.77030054809328, -84.37989234924316],</span>
+<span class="go">    [33.75731409904876, -84.36701774597168],</span>
+<span class="go">    [33.745110752457876, -84.37491416931152],</span>
+<span class="go">    [33.74368334701714, -84.40461158752441],</span>
+<span class="go">    [33.75931214236421, -84.41242218017578]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">spatial_sampling_points_polygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">format_list_points_for_display</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+<span class="go">use https://www.darrinward.com/lat-long/ for plotting</span>
+<span class="go">33.75699194755521,-84.40107107162476</span>
+<span class="go">33.75699194755521,-84.38971996307373</span>
+<span class="go">33.75699194755521,-84.3783688545227</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="streettraffic.database.TrafficData.generate_geojson_collection">
+<em class="property">static </em><code class="descname">generate_geojson_collection</code><span class="sig-paren">(</span><em>geojson_list: typing.List</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.generate_geojson_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.generate_geojson_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a list of geojson objects and assemble them in the following way
+The following format allows for multiple geojson object to be stored in the
+same geojson object. For more details, refer to
+<a class="reference external" href="https://macwright.org/2015/03/23/geojson-second-bite.html">https://macwright.org/2015/03/23/geojson-second-bite.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>geojson_list</strong> (<em>List</em>) &#8211; a list of geojson objects generated by
+<code class="docutils literal"><span class="pre">self.fetch_geojson_item()</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a valid geojson object that contains all the
+geojson object in geojson_list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_list</span>
+<span class="go">[{</span>
+<span class="go">  &quot;type&quot;: &quot;Feature&quot;,</span>
+<span class="go">  &quot;geometry&quot;: {</span>
+<span class="go">    &quot;type&quot;: &quot;Point&quot;,</span>
+<span class="go">    &quot;coordinates&quot;: [125.6, 10.1]</span>
+<span class="go">  },</span>
+<span class="go">  &quot;properties&quot;: {</span>
+<span class="go">    &quot;name&quot;: &quot;Dinagat Islands&quot;</span>
+<span class="go">  }</span>
+<span class="go">},</span>
+<span class="go">{</span>
+<span class="go">  &quot;type&quot;: &quot;Feature&quot;,</span>
+<span class="go">  &quot;geometry&quot;: {</span>
+<span class="go">    &quot;type&quot;: &quot;Point&quot;,</span>
+<span class="go">    &quot;coordinates&quot;: [15,15]</span>
+<span class="go">  },</span>
+<span class="go">  &quot;properties&quot;: {</span>
+<span class="go">    &quot;name&quot;: &quot;Test Islands&quot;</span>
+<span class="go">  }</span>
+<span class="go">}]  # notice the ... just mean more of those geojson object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">generate_geojson_collection</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">  &quot;type&quot;: &quot;FeatureCollection&quot;,</span>
+<span class="go">  &quot;features&quot;: [</span>
+<span class="go">    {</span>
+<span class="go">      &quot;type&quot;: &quot;Feature&quot;,</span>
+<span class="go">      &quot;geometry&quot;: {</span>
+<span class="go">        &quot;type&quot;: &quot;Point&quot;,</span>
+<span class="go">        &quot;coordinates&quot;: [125.6, 10.1]</span>
+<span class="go">      },</span>
+<span class="go">      &quot;properties&quot;: {</span>
+<span class="go">        &quot;name&quot;: &quot;Dinagat island&quot;</span>
+<span class="go">      }</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">      &quot;type&quot;: &quot;Feature&quot;,</span>
+<span class="go">      &quot;geometry&quot;: {</span>
+<span class="go">        &quot;type&quot;: &quot;Point&quot;,</span>
+<span class="go">        &quot;coordinates&quot;: [15,15]</span>
+<span class="go">      },</span>
+<span class="go">      &quot;properties&quot;: {</span>
+<span class="go">        &quot;name&quot;: &quot;Test Islands&quot;</span>
+<span class="go">      }</span>
+<span class="go">    }</span>
+<span class="go">  ]</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_analytics_monitored_area_description_collection">
+<code class="descname">get_analytics_monitored_area_description_collection</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_analytics_monitored_area_description_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_analytics_monitored_area_description_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a list of <code class="docutils literal"><span class="pre">description</span></code> (the secondary key of
+the <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code> table) of each analytics_monitored_area
+documents</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_analytics_traffic_pattern">
+<code class="descname">get_analytics_traffic_pattern</code><span class="sig-paren">(</span><em>analytics_monitored_area_id: str</em>, <em>crawled_batch_id: str = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_analytics_traffic_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_analytics_traffic_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <code class="docutils literal"><span class="pre">analytics_monitored_area_id</span></code> and <code class="docutils literal"><span class="pre">crawled_batch_id</span></code>,
+fetch the related <code class="docutils literal"><span class="pre">analytics_traffic_pattern</span></code> documents</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>analytics_monitored_area_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code></li>
+<li><strong>crawled_batch_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">crawled_batch</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the corresponding <code class="docutils literal"><span class="pre">analytics_traffic_pattern</span></code> documents</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_analytics_traffic_pattern_between">
+<code class="descname">get_analytics_traffic_pattern_between</code><span class="sig-paren">(</span><em>date_start: str</em>, <em>date_end: str</em>, <em>analytics_monitored_area_description: str</em>, <em>analytics_monitored_area_id: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_analytics_traffic_pattern_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_analytics_traffic_pattern_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch all possible <code class="docutils literal"><span class="pre">analytics_traffic_pattern</span></code> documents
+between <code class="docutils literal"><span class="pre">date_start</span></code> and <code class="docutils literal"><span class="pre">date_end</span></code> for a <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code>
+documents</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date_start</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the starting date</li>
+<li><strong>date_end</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the ending date</li>
+<li><strong>analytics_monitored_area_description</strong> (<em>str</em>) &#8211; the secondary key of
+table <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code></li>
+<li><strong>analytics_monitored_area_id</strong> (<em>str</em>) &#8211; the primary key of table
+<code class="docutils literal"><span class="pre">analytics_monitored_area</span></code>. The default is set to None
+if specified, the program will fetch <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code>
+documents based on <code class="docutils literal"><span class="pre">analytics_monitored_area_id</span></code> rather than
+<code class="docutils literal"><span class="pre">analytics_monitored_area_description</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of all <code class="docutils literal"><span class="pre">analytics_traffic_pattern</span></code> documents
+between <code class="docutils literal"><span class="pre">date_start</span></code> and <code class="docutils literal"><span class="pre">date_end</span></code> for a <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code>
+documents</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_crawled_batch_id_between">
+<code class="descname">get_crawled_batch_id_between</code><span class="sig-paren">(</span><em>date_start: str</em>, <em>date_end: str</em><span class="sig-paren">)</span> &#x2192; rethinkdb.net.DefaultCursor<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_crawled_batch_id_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_crawled_batch_id_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will get all the crawled_batch_id between date_start and date_end</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date_start</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the starting date</li>
+<li><strong>date_end</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the ending date</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>a Cursor object of all crawled_batch_id in <code class="docutils literal"><span class="pre">crawled_batch</span></code> table that
+are between <code class="docutils literal"><span class="pre">date_start</span></code> and <code class="docutils literal"><span class="pre">date_end</span></code>. You can use <code class="docutils literal"><span class="pre">DefaultCursor.next()</span></code> or</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">DefaultCursor</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  <span class="c1"># do operation with item</span>
+</pre></div>
+</div>
+<p>to interact with the resulting data</p>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">r.net.DefaultCursor</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">date_start</span> <span class="o">=</span> <span class="s2">&quot;2017-06-28T14:20:00.000Z&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">date_end</span> <span class="o">=</span> <span class="s2">&quot;2017-06-28T23:20:00.000Z&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span> <span class="o">=</span> <span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">get_crawled_batch_id_between</span><span class="p">(</span><span class="n">date_start</span><span class="p">,</span> <span class="n">date_end</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collection</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">&#39;ec65b3e5-7abb-484c-90c0-d943822b4402&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">collection</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="go">5e5f9e07-d510-49ea-b19d-25e315e48c59</span>
+<span class="go">7f43dcd9-462a-471f-b752-d031e7473d69</span>
+<span class="go">45ffc64d-4130-4072-9b52-9cbce2329c62</span>
+<span class="go">b26f0022-f003-4def-95e5-e6be291d5979</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_historic_batch">
+<code class="descname">get_historic_batch</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_historic_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_historic_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generate the newest 100 crawled_batch list</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of object like<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;crawled_timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-06-19T19:29:37.845000+00:00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;a6f344c6-9941-41b4-aaf7-83e6ecab5ec2&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">get_historic_batch</span><span class="p">()</span>
+<span class="go">[{&#39;crawled_timestamp&#39;: &#39;2017-06-19T19:29:37.845000+00:00&#39;,</span>
+<span class="go"> &#39;id&#39;: &#39;a6f344c6-9941-41b4-aaf7-83e6ecab5ec2&#39;},</span>
+<span class="go">{&#39;crawled_timestamp&#39;: &#39;2017-06-19T17:36:56.453000+00:00&#39;,</span>
+<span class="go"> &#39;id&#39;: &#39;3872cf48-e40d-4826-86aa-bc8ee1b36631&#39;},</span>
+<span class="go">{&#39;crawled_timestamp&#39;: &#39;2017-06-19T17:20:00.645000+00:00&#39;,</span>
+<span class="go"> &#39;id&#39;: &#39;fbbc23d5-5bcb-4c99-af12-6b66022effcd&#39;}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_historic_traffic">
+<code class="descname">get_historic_traffic</code><span class="sig-paren">(</span><em>routing_info: typing.Dict</em>, <em>use_overview: bool = True</em>, <em>crawled_batch_id: str = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_historic_traffic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_historic_traffic" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generate a geojson object that includes all the traffic flow
+data with respect to your selected routing_info and crawled_batch_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>routing_info</strong> (<em>Dict</em>) &#8211; the routing JSON object from Google Javascript Direction API</li>
+<li><strong>use_overview</strong> (<em>bool</em>) &#8211; whether to use <code class="docutils literal"><span class="pre">route['overview_polyline']</span></code> to build <code class="docutils literal"><span class="pre">route_cached_doc</span></code>.
+If set to be True, the execution will be generally faster, but you will have less coordiantes
+in your route_cached_doc.</li>
+<li><strong>crawled_batch_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">crawled_batch</span></code>, if crawled_batch_id is <code class="docutils literal"><span class="pre">None</span></code>,
+the default setting, then it will be initlized to be the same as
+<code class="docutils literal"><span class="pre">self.latest_crawled_batch_id</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a geojson object that uses <code class="docutils literal"><span class="pre">FeatureCollection</span></code> to contain multiple geojson object
+related to the routing</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>maybe use async to speed up performance</li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_historic_traffic_between">
+<code class="descname">get_historic_traffic_between</code><span class="sig-paren">(</span><em>routing_info: typing.Dict</em>, <em>date_start: str</em>, <em>date_end: str</em>, <em>use_overview: bool = True</em><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_historic_traffic_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_historic_traffic_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a routing_info, this function will get a historic_traffic
+for each crawled_batch_id between date_start and date_end.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>routing_info</strong> (<em>Dict</em>) &#8211; the routing JSON object from Google Javascript Direction API</li>
+<li><strong>date_start</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the starting date</li>
+<li><strong>date_end</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the ending date</li>
+<li><strong>use_overview</strong> (<em>bool</em>) &#8211; whether to use <code class="docutils literal"><span class="pre">route['overview_polyline']</span></code> to build <code class="docutils literal"><span class="pre">route_cached_doc</span></code>.
+If set to be True, the execution will be generally faster, but you will have less coordiantes
+in your route_cached_doc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>a list of object that looks like this</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;crawled_batch_id&quot;</span><span class="p">:</span> <span class="mf">5e5</span><span class="n">f9e07</span><span class="o">-</span><span class="n">d510</span><span class="o">-</span><span class="mi">49</span><span class="n">ea</span><span class="o">-</span><span class="n">b19d</span><span class="o">-</span><span class="mf">25e315</span><span class="n">e48c59</span>
+    <span class="s2">&quot;crawled_batch_id_traffic&quot;</span><span class="p">:</span> <span class="nb">object</span> <span class="c1"># a geojson object with respect to routing_info</span>
+    <span class="s2">&quot;crawled_timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_historic_traffic_multiple_days">
+<code class="descname">get_historic_traffic_multiple_days</code><span class="sig-paren">(</span><em>routing_info: typing.Dict</em>, <em>date_start_end_list: typing.List</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_historic_traffic_multiple_days"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_historic_traffic_multiple_days" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.get_nearest_road">
+<code class="descname">get_nearest_road</code><span class="sig-paren">(</span><em>location_data: tuple</em>, <em>max_dist: int</em>, <em>max_results: int = 1</em>, <em>location_type: str = 'latlon'</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.get_nearest_road"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.get_nearest_road" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function finds the nearest document of <code class="docutils literal"><span class="pre">road_data</span></code> table with
+respect to your queried location</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>location_data</strong> (<em>tuple</em>) &#8211; for now we only support (latitude: float, longitude: float)</li>
+<li><strong>max_dist</strong> (<em>int</em>) &#8211; maximal distance query range for your input point</li>
+<li><strong>max_results</strong> (<em>int</em>) &#8211; the maximum result of your query. Default is set to <code class="docutils literal"><span class="pre">1</span></code>.
+Notice Currently this doesn&#8217;t mean anything since we always return the only nearest,
+in the future, we might support returning more couple nearest roads.</li>
+<li><strong>location_type</strong> (<em>str</em>) &#8211; the location_data type. Default is set to <code class="docutils literal"><span class="pre">&quot;latlon&quot;</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a color</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">location_data</span> <span class="o">=</span> <span class="p">(</span><span class="mf">33.76895</span><span class="p">,</span> <span class="o">-</span><span class="mf">84.37777</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">get_nearest_road</span><span class="p">(</span><span class="n">location_data</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="go">{&#39;dist&#39;: 0.638734341680409,</span>
+<span class="go">&#39;doc&#39;: {&#39;FC&#39;: 4,</span>
+<span class="go"> &#39;flow_item_id&#39;: &#39;{&quot;DE&quot;: &quot;US-278/US-29/Ponce De Leon Ave NE&quot;, &quot;LE&quot;: 0.58406, &quot;PC&quot;: 12873, &quot;QD&quot;: &quot;-&quot;}&#39;,</span>
+<span class="go"> &#39;geometry&#39;: {&#39;$reql_type$&#39;: &#39;GEOMETRY&#39;,</span>
+<span class="go">  &#39;coordinates&#39;: [[-84.37777, 33.76865],</span>
+<span class="go">   [-84.37775, 33.76952],</span>
+<span class="go">   [-84.37774, 33.76994]],</span>
+<span class="go">  &#39;type&#39;: &#39;LineString&#39;},</span>
+<span class="go"> &#39;road_data_id&#39;: &#39;[&quot;33.76865,-84.37777 33.76952,-84.37775 33.76994,-84.37774 &quot;]&#39;,</span>
+<span class="go"> &#39;value&#39;: [&#39;33.76865,-84.37777 33.76952,-84.37775 33.76994,-84.37774 &#39;]}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.helper_create_tables">
+<code class="descname">helper_create_tables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.helper_create_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.helper_create_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a helper function to create default tables in rethinkDB</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.insert_analytics_traffic_pattern">
+<code class="descname">insert_analytics_traffic_pattern</code><span class="sig-paren">(</span><em>analytics_monitored_area_id: str</em>, <em>crawled_batch_id: str = None</em>, <em>force=False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.insert_analytics_traffic_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.insert_analytics_traffic_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a analytics_traffic_pattern document.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>analytics_monitored_area_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code></li>
+<li><strong>crawled_batch_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">crawled_batch</span></code></li>
+<li><strong>force</strong> (<em>bool</em>) &#8211; whether to overide a analytics_traffic_pattern document
+if force == False, we raise an Exception</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">typical_insertion</span>  <span class="c1"># this is an example of documents that are inserted</span>
+<span class="go">{</span>
+<span class="go">    &quot;analytics_monitored_area_id&quot;:  &quot;[33.880079, 33.648894, -84.485086, -84.311365]&quot; ,</span>
+<span class="go">    &quot;analytics_traffic_pattern_id&quot;:  &quot;17e28c2e-bd09-478a-b880-767f2dc84cfa&quot; ,</span>
+<span class="go">    &quot;average_JF&quot;: 0.09392949526813882 ,</span>
+<span class="go">    &quot;crawled_batch_id&quot;:  &quot;25657665-b131-4ae7-bb13-7e26440cf8e0&quot; ,</span>
+<span class="go">    &quot;crawled_timestamp&quot;: Tue Jun 27 2017 07:00:00 GMT+00:00 ,</span>
+<span class="go">    &quot;flow_item_count&quot;: 317</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.insert_analytics_traffic_pattern_between">
+<code class="descname">insert_analytics_traffic_pattern_between</code><span class="sig-paren">(</span><em>date_start: str</em>, <em>date_end: str</em>, <em>analytics_monitored_area_id: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.insert_analytics_traffic_pattern_between"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.insert_analytics_traffic_pattern_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert <code class="docutils literal"><span class="pre">analytics_traffic_pattern</span></code> documents for each <code class="docutils literal"><span class="pre">crawled_batch_id</span></code>
+between <code class="docutils literal"><span class="pre">date_start</span></code> and <code class="docutils literal"><span class="pre">date_end</span></code>. (given that you have inserted <code class="docutils literal"><span class="pre">flow_data</span></code>
+documents between <code class="docutils literal"><span class="pre">date_start</span></code> and <code class="docutils literal"><span class="pre">date_end</span></code>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date_start</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the starting date</li>
+<li><strong>date_end</strong> (<em>str</em>) &#8211; an ISO 8601 format string indicating the ending date</li>
+<li><strong>analytics_monitored_area_id</strong> (<em>str</em>) &#8211; the primary key of table <code class="docutils literal"><span class="pre">analytics_monitored_area</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.insert_json_data">
+<code class="descname">insert_json_data</code><span class="sig-paren">(</span><em>data: typing.Dict</em>, <em>crawled_batch_id: str</em>, <em>testing=False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.insert_json_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.insert_json_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This funciton will analyze a JSON raw data from
+Here.com and insert cooresponding documents. each documents
+is associated with a <code class="docutils literal"><span class="pre">crawled_batch_id</span></code>, which specifies
+the time of documents retrieval.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>Dict</em>) &#8211; The JSON raw data</li>
+<li><strong>crawled_batch_id</strong> (<em>str</em>) &#8211; the id of <cite>crawled_batch</cite> table, it tells
+us about the time of documents retrieval</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None, although if testing = True, we would return a tuple
+(original_data_insertion_ids, flow_data_insertion_ids, road_data_insertion_ids)
+to trace what have we inserted</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For documentation of the file format, refer to
+<a class="reference external" href="http://traffic.cit.api.here.com/traffic/6.0/xsd/flow.xsd?app_id=F8aPRXcW3MmyUvQ8Z3J9&amp;app_code=IVp1_zoGHdLdz0GvD_Eqsw">http://traffic.cit.api.here.com/traffic/6.0/xsd/flow.xsd?app_id=F8aPRXcW3MmyUvQ8Z3J9&amp;app_code=IVp1_zoGHdLdz0GvD_Eqsw</a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.parse_SHP_values">
+<code class="descname">parse_SHP_values</code><span class="sig-paren">(</span><em>value: typing.List</em><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.parse_SHP_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.parse_SHP_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function convert the <code class="docutils literal"><span class="pre">['SHP']['values']</span></code> of the JSON raw data into a list that
+conforms line specification of RethinkDB.</p>
+<p>More specifically, in RethinkDB every point has the <strong>opposite</strong> parameters: (long, lat) while our
+data has point (lat, long). For more details,
+refer to <a class="reference external" href="https://rethinkdb.com/api/python/line/">https://rethinkdb.com/api/python/line/</a> and <a class="reference external" href="https://rethinkdb.com/api/javascript/point/">https://rethinkdb.com/api/javascript/point/</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>List</em>) &#8211; the <code class="docutils literal"><span class="pre">['SHP']['values']</span></code> of the JSON raw data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of coordinates that is compliant with RethinkDB coordinates
+specification</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">parse_SHP_values</span><span class="p">([</span><span class="s2">&quot;34.9495,-82.43912 34.94999,-82.4392 34.95139,-82.4394 &quot;</span><span class="p">])</span>
+<span class="go">[[-82.43912, 34.9495], [-82.4392, 34.94999], [-82.4394, 34.95139]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.read_traffic_data">
+<code class="descname">read_traffic_data</code><span class="sig-paren">(</span><em>url: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.read_traffic_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.read_traffic_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functios takes the input url and return its json object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>str</em>) &#8211; a url that has HERE traffic json file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a parsed JSON file of the url</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.set_traffic_patter_monitoring_area">
+<code class="descname">set_traffic_patter_monitoring_area</code><span class="sig-paren">(</span><em>polygon: typing.List</em>, <em>description: str</em>, <em>grid_point_distance: int = 1000</em>, <em>testing: bool = False</em>, <em>force: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.set_traffic_patter_monitoring_area"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.set_traffic_patter_monitoring_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function sample points within the polygon, store the nearest
+<code class="docutils literal"><span class="pre">flow_item</span></code> in a list and store the information in
+<code class="docutils literal"><span class="pre">analytics_monitored_area</span></code> table.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygon</strong> (<em>List</em>) &#8211; a list of latlon coordiantes</li>
+<li><strong>description</strong> (<em>str</em>) &#8211; a description of the monitoring area. e.g &#8216;Atlanta_polygon&#8217;</li>
+<li><strong>grid_point_distance</strong> (<em>int</em>) &#8211; how far away is each point to each other.
+The default value is set to 1000 meters</li>
+<li><strong>testing</strong> (<em>List</em>) &#8211; for testing purposes only. If set True,
+it prints out how many duplicate flow_item_id are there.
+Default is set to False.</li>
+<li><strong>force</strong> (<em>bool</em>) &#8211; whether to overide a analytics_monitored_area document
+if force == False, we raise an Exception</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="streettraffic.database.TrafficData.spatial_sampling_points_polygon">
+<em class="property">static </em><code class="descname">spatial_sampling_points_polygon</code><span class="sig-paren">(</span><em>polygon: typing.List</em>, <em>grid_point_distance: int = 1000</em><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.spatial_sampling_points_polygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.spatial_sampling_points_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a list of sample points that are grid_point_distance away
+from each other within the polygon</p>
+<p>For example, let&#8217;s use * to denote those points that construct the polygon:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">###^^^*^^^####  (in this example, )</span>
+<span class="c1">#  *^^^^^*   #</span>
+<span class="c1">#  ^^^^^^^   #</span>
+<span class="c1">###^^*^^^^####</span>
+</pre></div>
+</div>
+<p>Then, this function will create a even distribution of query points based on grid_point_distance. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">###^$^$^$*####  (in this example, the sample point are denoted as $)</span>
+<span class="c1">#  ^^^^^^^   #</span>
+<span class="c1">#  ^$^$^$^   #</span>
+<span class="c1">#  ^^^^^^^   #</span>
+<span class="c1">###*$^$^$^####</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygon</strong> (<em>List</em>) &#8211; a list of latlon coordiantes</li>
+<li><strong>grid_point_distance</strong> (<em>int</em>) &#8211; how far away is each point to each other (this is probably very bad english)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of sample points within the polygon</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">polygon</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">33.75931214236421</span><span class="p">,</span> <span class="o">-</span><span class="mf">84.41242218017578</span><span class="p">],</span>
+<span class="go">    [33.77030054809328, -84.37989234924316],</span>
+<span class="go">    [33.75731409904876, -84.36701774597168],</span>
+<span class="go">    [33.745110752457876, -84.37491416931152],</span>
+<span class="go">    [33.74368334701714, -84.40461158752441],</span>
+<span class="go">    [33.75931214236421, -84.41242218017578]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">spatial_sampling_points_polygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+<span class="go">[[33.75699194755521, -84.40107107162476],</span>
+<span class="go">[33.75699194755521, -84.38971996307373],</span>
+<span class="go">[33.75699194755521, -84.3783688545227]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># these are the sampling points that are 1000 meters away from each other</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># and all of them are within the specified polygon</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function does <strong>NOT</strong> handle any region passes lon90 lat180</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.store_matrix_json">
+<code class="descname">store_matrix_json</code><span class="sig-paren">(</span><em>matrix_list: pandas.core.frame.DataFrame</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.store_matrix_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.store_matrix_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes the matrix, download all the jsons in the matrix, store them in
+the database</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matrix_list</strong> (<em>pd.DataFrame</em>) &#8211; a matrix of urls of json traffic information generated
+by <code class="docutils literal"><span class="pre">Utility.get_area_tile_matrix_url()</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">                                                   0  \</span>
+<span class="go">0  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">1  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">2  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">                                                   1  \</span>
+<span class="go">0  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">1  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">2  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">                                                   2</span>
+<span class="go">0  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">1  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="go">2  https://traffic.cit.api.here.com/traffic/6.2/f...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># this df is an example input</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.database.TrafficData.traffic_flow_color_scheme">
+<code class="descname">traffic_flow_color_scheme</code><span class="sig-paren">(</span><em>traffic_flow_data: typing.Dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/streettraffic/database.html#TrafficData.traffic_flow_color_scheme"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.database.TrafficData.traffic_flow_color_scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the traffic_flow_data, we calculate a color that indicates the traffic situation of the road</p>
+<p>for further details on those encoding, refer to
+<a class="reference external" href="http://traffic.cit.api.here.com/traffic/6.0/xsd/flow.xsd?app_id=F8aPRXcW3MmyUvQ8Z3J9&amp;app_code=IVp1_zoGHdLdz0GvD_Eqsw">http://traffic.cit.api.here.com/traffic/6.0/xsd/flow.xsd?app_id=F8aPRXcW3MmyUvQ8Z3J9&amp;app_code=IVp1_zoGHdLdz0GvD_Eqsw</a></p>
+<p>Check out the following link for coloring Map
+<a class="reference external" href="https://developer.here.com/rest-apis/documentation/traffic/topics/tiles.html">https://developer.here.com/rest-apis/documentation/traffic/topics/tiles.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>traffic_flow_data</strong> (<em>Dict</em>) &#8211; traffic flow data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a color</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span> <span class="o">=</span> <span class="n">TrafficServer</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;Traffic&quot;</span><span class="p">,</span> <span class="n">database_ip</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_flow_data</span>
+<span class="go">{</span>
+<span class="go">    &quot;CN&quot;: 0.7 ,  # Confidence, an indication of how the speed was determined. -1.0 road closed. 1.0=100% 0.7-100% Historical Usually a value between .7 and 1.0.</span>
+<span class="go">    &quot;FF&quot;: 41.01 , # The free flow speed on this stretch of road.</span>
+<span class="go">    &quot;JF&quot;: 1.89393 , # The number between 0.0 and 10.0 indicating the expected quality of travel. When there is a road closure, the Jam Factor will be 10. As the number approaches 10.0 the quality of travel is getting worse. -1.0 indicates that a Jam Factor could not be calculated.</span>
+<span class="go">    &quot;LN&quot;: [ ],</span>
+<span class="go">    &quot;SP&quot;: 31.69 , # Speed (based on UNITS) capped by speed limit MPH</span>
+<span class="go">    &quot;SU&quot;: 31.69 , # Speed (based on UNITS) not capped by speed limit</span>
+<span class="go">    &quot;TY&quot;:  &quot;TR&quot;   # Used when it is needed to differentiate between different kinds of location types.</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">traffic_server</span><span class="o">.</span><span class="n">traffic_data</span><span class="o">.</span><span class="n">traffic_flow_color_scheme</span><span class="p">(</span><span class="n">traffic_flow_data</span><span class="p">)</span>
+<span class="go">&#39;green&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-streettraffic.datafeed">
+<span id="streettraffic-datafeed-module"></span><h2>streettraffic.datafeed module<a class="headerlink" href="#module-streettraffic.datafeed" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="streettraffic.datafeed.DataFeed">
+<em class="property">class </em><code class="descclassname">streettraffic.datafeed.</code><code class="descname">DataFeed</code><span class="sig-paren">(</span><em>database_name: str = 'Traffic'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.finishing">
+<code class="descname">finishing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.finishing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.finishing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.init">
+<code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class establishes a connection towards the database</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.monitor_flow_data_feed">
+<code class="descname">monitor_flow_data_feed</code><span class="sig-paren">(</span><em>tablename: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.monitor_flow_data_feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.monitor_flow_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.set_feed_data_type">
+<code class="descname">set_feed_data_type</code><span class="sig-paren">(</span><em>tablename_list: typing.List</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.set_feed_data_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.set_feed_data_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.datafeed.DataFeed.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/datafeed.html#DataFeed.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.datafeed.DataFeed.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-streettraffic.log">
+<span id="streettraffic-log-module"></span><h2>streettraffic.log module<a class="headerlink" href="#module-streettraffic.log" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="streettraffic.log.main">
+<code class="descclassname">streettraffic.log.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/log.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.log.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-streettraffic.server">
+<span id="streettraffic-server-module"></span><h2>streettraffic.server module<a class="headerlink" href="#module-streettraffic.server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="streettraffic.server.TrafficServer">
+<em class="property">class </em><code class="descclassname">streettraffic.server.</code><code class="descname">TrafficServer</code><span class="sig-paren">(</span><em>settings: typing.Dict</em>, <em>database_name: str = 'Traffic'</em>, <em>database_ip: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="streettraffic.server.TrafficServer.consumer_handler">
+<code class="descname">consumer_handler</code><span class="sig-paren">(</span><em>websocket</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer.consumer_handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer.consumer_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.server.TrafficServer.handler">
+<code class="descname">handler</code><span class="sig-paren">(</span><em>websocket</em>, <em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer.handler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer.handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.server.TrafficServer.init_http_server">
+<code class="descname">init_http_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer.init_http_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer.init_http_server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.server.TrafficServer.main_crawler">
+<code class="descname">main_crawler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer.main_crawler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer.main_crawler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="streettraffic.server.TrafficServer.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/server.html#TrafficServer.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.server.TrafficServer.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="streettraffic-tools-module">
+<h2>streettraffic.tools module<a class="headerlink" href="#streettraffic-tools-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-streettraffic.tools"></span><dl class="function">
+<dt id="streettraffic.tools.dump_data_object">
+<code class="descclassname">streettraffic.tools.</code><code class="descname">dump_data_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/tools.html#dump_data_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.tools.dump_data_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>input: obj: any_serializable_object(something like list, dataframe, dict, ...)</p>
+<p>This function serialize a data object and save it to path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="streettraffic.tools.load_data_object">
+<code class="descclassname">streettraffic.tools.</code><code class="descname">load_data_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/streettraffic/tools.html#load_data_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#streettraffic.tools.load_data_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>input: path: str(specify a path)</p>
+<p>This function open the file in specified path and return cooresponding data object</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-streettraffic">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-streettraffic" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="streettraffic.map_resource.html" class="btn btn-neutral float-right" title="streettraffic.map_resource package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="StreetTraffic Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Costa Huang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.10',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
